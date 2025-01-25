@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Local Authority Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  <!-- Home Page -->
+  <div id="home-page" class="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+    <div class="max-w-md w-full mx-4">
+      <div class="bg-white rounded-lg shadow-xl p-8">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">
+          Welcome to Our Platform
+        </h1>
+        <div class="space-y-4">
+          <button
+            onclick="navigateTo('login-page')"
+            class="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+            <span>Login</span>
+          </button>
+          <button
+            onclick="navigateTo('profile-page')"
+            class="w-full flex items-center justify-center gap-2 bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" x2="19" y1="8" y2="14"/><line x1="22" x2="16" y1="11" y2="11"/></svg>
+            <span>Create Profile</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Page -->
+  <div id="login-page" class="hidden min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+    <div class="max-w-md w-full mx-4">
+      <div class="bg-white rounded-lg shadow-xl p-8">
+        <div class="flex items-center mb-6">
+          <button
+            onclick="navigateTo('home-page')"
+            class="text-gray-600 hover:text-gray-800"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          </button>
+          <h2 class="text-2xl font-bold text-center text-gray-800 flex-1">
+            Login
+          </h2>
+        </div>
+        <form class="space-y-4" onsubmit="event.preventDefault()">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">
+              Email
+            </label>
+            <input
+              type="email"
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="Enter your email"
+            />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">
+              Password
+            </label>
+            <input
+              type="password"
+              class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              placeholder="Enter your password"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" x2="3" y1="12" y2="12"/></svg>
+            <span>Sign In</span>
+          </button>
+        </form>
+        <div class="mt-6 space-y-4">
+          <button
+            onclick="navigateTo('check-status-page')"
+            class="w-full flex items-center justify-center gap-2 bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 transition duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>Check Problem Status</span>
+          </button>
+          <button
+            onclick="navigateTo('complaint-page')"
+            class="w-full flex items-center justify-center gap-2 bg-yellow-600 text-white py-3 px-4 rounded-lg hover:bg-yellow-700 transition duration-200"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <span>Complaint Now</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Selection Page -->
+  <div id="profile-page" class="hidden min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+    <div class="max-w-md w-full mx-4">
+      <div class="bg-white rounded-lg shadow-xl p-8">
+        <div class="flex items-center mb-6">
+          <button
+            onclick="navigateTo('home-page')"
+            class="text-gray-600 hover:text-gray-800"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          </button>
+          <h2 class="text-2xl font-bold text-center text-gray-800 flex-1">
+            Create Profile
+          </h2>
+        </div>
+
+        <div class="space-y-6">
+          <div class="text-center text-gray-600 mb-6">
+            Please select your user type:
+          </div>
+
+          <div class="grid grid-cols-1 gap-4">
+            <button
+              onclick="navigateTo('general-registration')"
+              id="general-button"
+              class="p-6 rounded-lg border-2 border-gray-200 hover:border-blue-200 hover:bg-gray-50 transition duration-200 flex items-center gap-3"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-blue-600"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <div class="text-left">
+                <div class="font-semibold text-gray-800">General User</div>
+                <div class="text-sm text-gray-500">
+                  Access to basic features
+                </div>
+              </div>
+            </button>
+
+            <button
+              onclick="navigateTo('admin-registration')"
+              id="admin-button"
+              class="p-6 rounded-lg border-2 border-gray-200 hover:border-purple-200 hover:bg-gray-50 transition duration-200 flex items-center gap-3"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-purple-600"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/></svg>
+              <div class="text-left">
+                <div class="font-semibold text-gray-800">
+                  Local Administrator
+                </div>
+                <div class="text-sm text-gray-500">
+                  Access to advanced features and management tools
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- General User Registration -->
+  <div id="general-registration" class="hidden min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+    <div class="max-w-md w-full mx-4">
+      <div class="bg-white rounded-lg shadow-xl p-8">
+        <div class="flex items-center mb-6">
+          <button
+            onclick="navigateTo('profile-page')"
+            class="text-gray-600 hover:text-gray-800"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          </button>
+          <h2 class="text-2xl font-bold text-center text-gray-800 flex-1">
+            General User Registration
+          </h2>
+        </div>
+        <form class="space-y-4" onsubmit="event.preventDefault()">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Username</label>
+            <input type="text" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Choose a username" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Mobile Number</label>
+            <input type="tel" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter mobile number" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Password</label>
+            <input type="password" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Create a password" />
+          </div>
+          <button type="submit" class="w-full bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-200">
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Registration -->
+  <div id="admin-registration" class="hidden min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+    <div class="max-w-md w-full mx-4">
+      <div class="bg-white rounded-lg shadow-xl p-8">
+        <div class="flex items-center mb-6">
+          <button
+            onclick="navigateTo('profile-page')"
+            class="text-gray-600 hover:text-gray-800"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          </button>
+          <h2 class="text-2xl font-bold text-center text-gray-800 flex-1">
+            Administrator Registration
+          </h2>
+        </div>
+        <form class="space-y-4" onsubmit="event.preventDefault()">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Username</label>
+            <input type="text" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Choose a username" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Position</label>
+            <input type="text" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter your position" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Mobile Number</label>
+            <input type="tel" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Enter mobile number" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Password</label>
+            <input type="password" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Create a password" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Profile Picture</label>
+            <div class="mt-1 flex items-center justify-center w-full">
+              <label class="w-full flex flex-col items-center px-4 py-6 bg-white rounded-lg border-2 border-gray-300 border-dashed cursor-pointer hover:border-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                <span class="mt-2 text-sm text-gray-600">Upload profile picture</span>
+                <input type="file" class="hidden" accept="image/*" />
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="w-full bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition duration-200">
+            Create Account
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Complaint Page -->
+  <div id="complaint-page" class="hidden min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center py-8">
+    <div class="max-w-2xl w-full mx-4">
+      <div class="bg-white rounded-lg shadow-xl p-8">
+        <div class="flex items-center mb-6">
+          <button
+            onclick="navigateTo('login-page')"
+            class="text-gray-600 hover:text-gray-800"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          </button>
+          <h2 class="text-2xl font-bold text-center text-gray-800 flex-1">
+            Submit Complaint
+          </h2>
+        </div>
+        <form class="space-y-6" onsubmit="event.preventDefault()">
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Complaint Title</label>
+            <input type="text" class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500" placeholder="Brief title of your complaint" />
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 h-32" placeholder="Detailed description of the problem"></textarea>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Department</label>
+            <select class="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500">
+              <option value="">Select department</option>
+              <option value="water">Water Department</option>
+              <option value="electricity">Electricity Department</option>
+              <option value="roads">Roads and Infrastructure</option>
+              <option value="sanitation">Sanitation</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700">Media Upload</label>
+            <div class="mt-1 flex items-center justify-center w-full">
+              <label class="w-full flex flex-col items-center px-4 py-6 bg-white rounded-lg border-2 border-gray-300 border-dashed cursor-pointer hover:border-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" x2="12" y1="3" y2="15"/></svg>
+                <span class="mt-2 text-sm text-gray-600">Upload photos/videos</span>
+                <input type="file" class="hidden" accept="image/*,video/*" multiple />
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="w-full bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 transition duration-200">
+            Submit Complaint
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Check Status Page -->
+  <div id="check-status-page" class="hidden min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center py-8">
+    <div class="max-w-4xl w-full mx-4">
+      <div class="bg-white rounded-lg shadow-xl p-8">
+        <div class="flex items-center mb-6">
+          <button
+            onclick="navigateTo('login-page')"
+            class="text-gray-600 hover:text-gray-800"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          </button>
+          <h2 class="text-2xl font-bold text-center text-gray-800 flex-1">
+            Problem Status & Leaderboard
+          </h2>
+        </div>
+
+        <!-- Tabs -->
+        <div class="border-b border-gray-200 mb-6">
+          <div class="flex space-x-8">
+            <button onclick="showTab('problems')" class="border-b-2 border-blue-500 py-2 px-1 text-blue-600 font-medium">Problems</button>
+            <button onclick="showTab('leaderboard')" class="py-2 px-1 text-gray-500 hover:text-gray-700 font-medium">Leaderboard</button>
+          </div>
+        </div>
+
+        <!-- Problems List -->
+        <div id="problems-tab" class="space-y-6">
+          <!-- Sample Problem Card -->
+          <div class="bg-gray-50 rounded-lg p-6 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <h3 class="text-lg font-semibold text-gray-800">Water Supply Issue</h3>
+                <p class="text-gray-600 mt-1">Department: Water Department</p>
+                <p class="text-sm text-gray-500 mt-2">Submitted 2 days ago</p>
+              </div>
+              <span class="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+                In Progress
+              </span>
+            </div>
+            <div class="flex items-center space-x-4">
+              <div class="flex items-center">
+                <button class="text-gray-400 hover:text-blue-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                </button>
+                <span class="text-gray-600 mx-2">15</span>
+                <button class="text-gray-400 hover:text-blue-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 5 7 7-7 7"/></svg>
+                </button>
+              </div>
+              <div class="flex items-center">
+                <div class="flex text-yellow-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <span class="text-sm text-gray-600 ml-2">4.0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <div id="leaderboard-tab" class="hidden">
+          <div class="bg-yellow-50 rounded-lg p-6 mb-6">
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Representative of the Month</h3>
+            <div class="flex items-center space-x-4">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="Representative" class="w-16 h-16 rounded-full" />
+              <div>
+                <p class="font-semibold text-gray-800">John Smith</p>
+                <p class="text-gray-600">Water Department</p>
+                <div class="flex text-yellow-400 mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l- 5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Representatives Table -->
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rank</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Representative</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Department</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rating</th>
+                  <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Problems Solved</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <tr>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex items-center">
+                      <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                      <div class="ml-4">
+                        <div class="text-sm font-medium text-gray-900">John Smith</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Water Department</td>
+                  <td class="px-6 py-4 whitespace-nowrap">
+                    <div class="flex text-yellow-400">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <span class="ml-1 text-gray-600">4.9</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">42</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function navigateTo(pageId) {
+      // Hide all pages
+      document.querySelectorAll('[id$="-page"]').forEach(page => {
+        page.classList.add('hidden');
+      });
+      // Show selected page
+      document.getElementById(pageId).classList.remove('hidden');
+    }
+
+    function showTab(tabName) {
+      // Hide all tabs
+      document.getElementById('problems-tab').classList.add('hidden');
+      document.getElementById('leaderboard-tab').classList.add('hidden');
+      
+      // Show selected tab
+      document.getElementById(`${tabName}-tab`).classList.remove('hidden');
+      
+      // Update tab buttons
+      const buttons = document.querySelectorAll('[onclick^="showTab"]');
+      buttons.forEach(button => {
+        if (button.getAttribute('onclick').includes(tabName)) {
+          button.classList.add('border-b-2', 'border-blue-500', 'text-blue-600');
+          button.classList.remove('text-gray-500');
+        } else {
+          button.classList.remove('border-b-2', 'border-blue-500', 'text-blue-600');
+          button.classList.add('text-gray-500');
+        }
+      });
+    }
+  </script>
+</body>
+</html>
