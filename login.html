@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-md mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+        <h2 class="text-2xl font-bold mb-6 text-center">Secure Login</h2>
+        <form id="loginForm">
+            <div class="mb-4">
+                <label class="block mb-2">Username</label>
+                <input 
+                    type="text" 
+                    name="username" 
+                    id="username"
+                    placeholder="Enter username" 
+                    class="w-full px-3 py-2 border rounded"
+                >
+                <p id="usernameError" class="text-red-500 text-sm hidden"></p>
+            </div>
+
+            <div class="mb-4">
+                <label class="block mb-2">Phone Number</label>
+                <div class="flex">
+                    <input 
+                        type="tel" 
+                        name="phoneNumber" 
+                        id="phoneNumber"
+                        placeholder="10 digit phone number" 
+                        class="flex-grow px-3 py-2 border rounded"
+                    >
+                    <button 
+                        type="button" 
+                        id="sendPhoneOTP"
+                        class="ml-2 px-4 py-2 border rounded hover:bg-gray-100"
+                    >
+                        Send OTP
+                    </button>
+                </div>
+                <p id="phoneNumberError" class="text-red-500 text-sm hidden"></p>
+            </div>
+
+            <div class="mb-4">
+                <label class="block mb-2">Email</label>
+                <div class="flex">
+                    <input 
+                        type="email" 
+                        name="email" 
+                        id="email"
+                        placeholder="Enter email" 
+                        class="flex-grow px-3 py-2 border rounded"
+                    >
+                    <button 
+                        type="button" 
+                        id="sendEmailOTP"
+                        class="ml-2 px-4 py-2 border rounded hover:bg-gray-100"
+                    >
+                        Send OTP
+                    </button>
+                </div>
+                <p id="emailError" class="text-red-500 text-sm hidden"></p>
+            </div>
+
+            <div class="mb-4">
+                <label class="block mb-2">Password</label>
+                <input 
+                    type="password" 
+                    name="password" 
+                    id="password"
+                    placeholder="Enter password" 
+                    class="w-full px-3 py-2 border rounded"
+                >
+                <p id="passwordError" class="text-red-500 text-sm hidden"></p>
+            </div>
+
+            <div class="mb-4">
+                <label class="block mb-2">Email OTP</label>
+                <input 
+                    type="text" 
+                    name="emailOTP" 
+                    id="emailOTP"
+                    placeholder="Enter email OTP" 
+                    class="w-full px-3 py-2 border rounded"
+                >
+                <p id="emailOTPError" class="text-red-500 text-sm hidden"></p>
+            </div>
+
+            <div class="mb-4">
+                <label class="block mb-2">Phone OTP</label>
+                <input 
+                    type="text" 
+                    name="phoneOTP" 
+                    id="phoneOTP"
+                    placeholder="Enter phone OTP" 
+                    class="w-full px-3 py-2 border rounded"
+                >
+                <p id="phoneOTPError" class="text-red-500 text-sm hidden"></p>
+            </div>
+
+            <button 
+                type="submit" 
+                class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            >
+                Login
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('loginForm');
+            const inputs = {
+                username: document.getElementById('username'),
+                phoneNumber: document.getElementById('phoneNumber'),
+                email: document.getElementById('email'),
+                password: document.getElementById('password'),
+                emailOTP: document.getElementById('emailOTP'),
+                phoneOTP: document.getElementById('phoneOTP')
+            };
+            const errors = {
+                username: document.getElementById('usernameError'),
+                phoneNumber: document.getElementById('phoneNumberError'),
+                email: document.getElementById('emailError'),
+                password: document.getElementById('passwordError'),
+                emailOTP: document.getElementById('emailOTPError'),
+                phoneOTP: document.getElementById('phoneOTPError')
+            };
+
+            const sendOTP = (type) => {
+                console.log(`Sending OTP to ${type}`);
+                // Implement actual OTP sending logic
+            };
+
+            document.getElementById('sendPhoneOTP').addEventListener('click', () => sendOTP('phone'));
+            document.getElementById('sendEmailOTP').addEventListener('click', () => sendOTP('email'));
+
+            const validateForm = () => {
+                let isValid = true;
+                const phoneRegex = /^[0-9]{10}$/;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                // Reset previous errors
+                Object.values(errors).forEach(error => error.classList.add('hidden'));
+
+                // Validate username
+                if (!inputs.username.value) {
+                    errors.username.textContent = 'Username is required';
+                    errors.username.classList.remove('hidden');
+                    isValid = false;
+                }
+
+                // Validate phone number
+                if (!inputs.phoneNumber.value) {
+                    errors.phoneNumber.textContent = 'Phone number is required';
+                    errors.phoneNumber.classList.remove('hidden');
+                    isValid = false;
+                } else if (!phoneRegex.test(inputs.phoneNumber.value)) {
+                    errors.phoneNumber.textContent = 'Invalid phone number';
+                    errors.phoneNumber.classList.remove('hidden');
+                    isValid = false;
+                }
+
+                // Validate email
+                if (!inputs.email.value) {
+                    errors.email.textContent = 'Email is required';
+                    errors.email.classList.remove('hidden');
+                    isValid = false;
+                } else if (!emailRegex.test(inputs.email.value)) {
+                    errors.email.textContent = 'Invalid email format';
+                    errors.email.classList.remove('hidden');
+                    isValid = false;
+                }
+
+                // Validate password
+                if (!inputs.password.value) {
+                    errors.password.textContent = 'Password is required';
+                    errors.password.classList.remove('hidden');
+                    isValid = false;
+                } else if (inputs.password.value.length < 8) {
+                    errors.password.textContent = 'Password must be at least 8 characters';
+                    errors.password.classList.remove('hidden');
+                    isValid = false;
+                }
+
+                // Validate OTPs
+                if (!inputs.emailOTP.value) {
+                    errors.emailOTP.textContent = 'Email OTP is required';
+                    errors.emailOTP.classList.remove('hidden');
+                    isValid = false;
+                }
+
+                if (!inputs.phoneOTP.value) {
+                    errors.phoneOTP.textContent = 'Phone OTP is required';
+                    errors.phoneOTP.classList.remove('hidden');
+                    isValid = false;
+                }
+
+                return isValid;
+            };
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                if (validateForm()) {
+                    console.log('Form submitted', {
+                        username: inputs.username.value,
+                        phoneNumber: inputs.phoneNumber.value,
+                        email: inputs.email.value,
+                        password: inputs.password.value,
+                        emailOTP: inputs.emailOTP.value,
+                        phoneOTP: inputs.phoneOTP.value
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

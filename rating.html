@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Complaint Tracking</title>
+    <style>
+        .status-dot {
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .status-not-started { background-color: red; }
+        .status-in-progress { background-color: yellow; }
+        .status-completed { background-color: green; }
+        .star {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+        }
+        .star-filled { fill: gold; }
+        .star-empty { fill: gray; }
+    </style>
+</head>
+<body>
+    <div id="complaint-tracking">
+        <h2>Complaint Tracking</h2>
+    </div>
+
+    <script>
+        const complaintsData = [
+            {
+                id: 1,
+                description: 'Broken Road Near City Center',
+                authority: 'Public Works Department',
+                status: 'in-progress',
+                rating: 3,
+                upvotes: 45,
+                downvotes: 12,
+                updates: [
+                    { date: '2024-01-15', note: 'Survey completed' },
+                    { date: '2024-01-22', note: 'Repair materials ordered' }
+                ]
+            }
+        ];
+
+        function renderStars(rating) {
+            return [...Array(5)].map((_, index) => 
+                `<svg class="star ${index < rating ? 'star-filled' : 'star-empty'}" viewBox="0 0 24 24">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>`
+            ).join('');
+        }
+
+        function getProgressBar(status) {
+            const progressMap = {
+                'not-started': 10,
+                'in-progress': 50,
+                'completed': 100
+            };
+            return `
+                <div style="width: 100%; background-color: #e0e0e0; border-radius: 4px;">
+                    <div style="width: ${progressMap[status] || 0}%; height: 10px; background-color: green; border-radius: 4px;"></div>
+                </div>
+            `;
+        }
+
+        function renderComplaints() {
+            const container = document.getElementById('complaint-tracking');
+            
+            complaintsData.forEach(complaint => {
+                const complaintElement = document.createElement('div');
+                complaintElement.innerHTML = `
+                    <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <h3>${complaint.description}</h3>
+                            <div>
+                                <span class="status-dot status-${complaint.status}"></span>
+                                ${complaint.status.replace('-', ' ')}
+                            </div>
+                        </div>
+                        
+                        ${getProgressBar(complaint.status)}
+                        
+                        <div>
+                            <p>Authority: ${complaint.authority}</p>
+                            <div>
+                                Rating: 
+                                ${renderStars(complaint.rating)}
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4>Updates:</h4>
+                            ${complaint.updates.map(update => 
+                                `<div>${update.date}: ${update.note}</div>`
+                            ).join('')}
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px;">
+                            <button onclick="handleVote(${complaint.id}, 'upvotes')">
+                                👍 ${complaint.upvotes}
+                            </button>
+                            <button onclick="handleVote(${complaint.id}, 'downvotes')">
+                                👎 ${complaint.downvotes}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(complaintElement);
+            });
+        }
+
+        function handleVote(complaintId, voteType) {
+            const complaint = complaintsData.find(c => c.id === complaintId);
+            if (complaint) {
+                complaint[voteType]++;
+                document.getElementById('complaint-tracking').innerHTML = '';
+                renderComplaints();
+            }
+        }
+
+        // Initial render
+        renderComplaints();
+    </script>
+</body>
+</html>

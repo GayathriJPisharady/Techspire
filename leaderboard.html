@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Authority Leaderboard</title>
+  <style>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+    .text-center {
+      text-align: center;
+    }
+    .text-2xl {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .text-xl {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    .text-lg {
+      font-size: 1.125rem;
+      font-weight: bold;
+    }
+    .text-gray-600 {
+      color: #718096;
+    }
+    .text-gray-500 {
+      color: #A0AEC0;
+    }
+    .text-sm {
+      font-size: 0.875rem;
+    }
+    .text-xs {
+      font-size: 0.75rem;
+    }
+    .bg-blue-50 {
+      background-color: #ebf8ff;
+    }
+    .bg-white {
+      background-color: #fff;
+    }
+    .shadow-md {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .rounded-lg {
+      border-radius: 0.5rem;
+    }
+    .p-4 {
+      padding: 1rem;
+    }
+    .p-6 {
+      padding: 1.5rem;
+    }
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    .mb-6 {
+      margin-bottom: 1.5rem;
+    }
+    .flex {
+      display: flex;
+    }
+    .flex-col {
+      flex-direction: column;
+    }
+    .items-center {
+      align-items: center;
+    }
+    .grid {
+      display: grid;
+    }
+    .grid-cols-1 {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    .md\:grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .gap-4 {
+      gap: 1rem;
+    }
+    .w-24, .w-48 {
+      width: 6rem;
+    }
+    .h-24, .h-48 {
+      height: 6rem;
+    }
+    .rounded-full {
+      border-radius: 9999px;
+    }
+    .border {
+      border: 1px solid #E2E8F0;
+    }
+    .object-cover {
+      object-fit: cover;
+    }
+    .mt-2 {
+      margin-top: 0.5rem;
+    }
+    .ml-2 {
+      margin-left: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-2xl mb-6 text-center">Local Authority Representatives Leaderboard</h2>
+
+    <!-- Featured Representative of the Month -->
+    <div class="bg-blue-50 rounded-lg p-6 mb-6 text-center">
+      <h3 class="text-xl mb-4">Representative of the Month</h3>
+      <div class="flex flex-col items-center">
+        <img src="/api/placeholder/200/200" alt="John Doe" class="w-48 h-48 rounded-full object-cover mb-4">
+        <h4 class="text-lg">John Doe</h4>
+        <p class="text-gray-600">Municipal Commissioner</p>
+        <div class="flex items-center mt-2">
+          <span style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          <span class="ml-2">4.7</span>
+        </div>
+        <p class="text-sm text-gray-500">Total Ratings: 245</p>
+      </div>
+    </div>
+
+    <!-- Leaderboard List -->
+    <div class="bg-white shadow-md rounded-lg">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
+        <!-- Representative Item -->
+        <div class="border rounded-lg p-4 flex items-center">
+          <div class="mr-4">
+            <img src="/api/placeholder/200/200" alt="John Doe" class="w-24 h-24 rounded-full object-cover">
+          </div>
+          <div>
+            <h4 class="font-bold">John Doe</h4>
+            <p class="text-sm text-gray-600">Municipal Commissioner</p>
+            <p class="text-sm text-gray-500">City Administration</p>
+            <div class="flex items-center mt-2">
+              <span style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="ml-2">4.7</span>
+            </div>
+            <p class="text-xs text-gray-500">Total Ratings: 245</p>
+          </div>
+        </div>
+        <!-- Additional Representatives -->
+        <div class="border rounded-lg p-4 flex items-center">
+          <div class="mr-4">
+            <img src="/api/placeholder/200/200" alt="Sarah Smith" class="w-24 h-24 rounded-full object-cover">
+          </div>
+          <div>
+            <h4 class="font-bold">Sarah Smith</h4>
+            <p class="text-sm text-gray-600">Public Works Director</p>
+            <p class="text-sm text-gray-500">Infrastructure</p>
+            <div class="flex items-center mt-2">
+              <span style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+              <span class="ml-2">4.5</span>
+            </div>
+            <p class="text-xs text-gray-500">Total Ratings: 189</p>
+          </div>
+        </div>
+        <div class="border rounded-lg p-4 flex items-center">
+          <div class="mr-4">
+            <img src="/api/placeholder/200/200" alt="Michael Brown" class="w-24 h-24 rounded-full object-cover">
+          </div>
+          <div>
+            <h4 class="font-bold">Michael Brown</h4>
+            <p class="text-sm text-gray-600">Health Officer</p>
+            <p class="text-sm text-gray-500">Public Health</p>
+            <div class="flex items-center mt-2">
+              <span style="color: gold;">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+              <span class="ml-2">4.3</span>
+            </div>
+            <p class="text-xs text-gray-500">Total Ratings: 156</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

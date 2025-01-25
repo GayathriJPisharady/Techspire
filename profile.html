@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f9;
+      padding: 20px;
+    }
+    .container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .radio-group {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      font-weight: normal;
+    }
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 class="title">Profile Registration</h2>
+    
+    <div class="radio-group">
+      <label>
+        <input type="radio" name="userType" value="people" />
+        General People
+      </label>
+      <label>
+        <input type="radio" name="userType" value="authority" />
+        Local Authority Rep
+      </label>
+    </div>
+
+    <form>
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter full name" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter email" />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter phone number" />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" name="address" placeholder="Enter address" />
+      </div>
+
+      <div class="form-group" id="additionalDetailsGroup" style="display: none;">
+        <label for="additionalDetails">Department/Designation</label>
+        <input type="text" id="additionalDetails" name="additionalDetails" placeholder="Enter department or designation" />
+      </div>
+
+      <button type="submit">Create Profile</button>
+    </form>
+  </div>
+
+  <script>
+    document.querySelectorAll('input[name="userType"]').forEach((radio) => {
+      radio.addEventListener('change', (e) => {
+        const additionalDetailsGroup = document.getElementById('additionalDetailsGroup');
+        if (e.target.value === 'authority') {
+          additionalDetailsGroup.style.display = 'block';
+        } else {
+          additionalDetailsGroup.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
