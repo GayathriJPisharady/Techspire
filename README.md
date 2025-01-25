@@ -1,8 +1,8 @@
 # Techspire
 Hackathon 
 <br>
-Authors:
-<p>Gayathri J Pisharody
-Aishwarya
-Shifna N
+<p>Authors:
+Gayathri J Pisharody<br>
+Aishwarya<br>
+Shifna N <br>
 Nayana G</p>
